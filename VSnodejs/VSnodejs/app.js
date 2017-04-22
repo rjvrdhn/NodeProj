@@ -86,6 +86,10 @@ app.post('/deleteDevice', function (req, res) {
 app.post('/measure', function (req, res) {
     
     console.log("Measure post request:" + JSON.stringify(req.body));
+
+    fs.writeFile('./server/mesuredata.txt', JSON.stringify(req.body), 'utf8', function (err) {
+        if (err) throw err;        
+    });
     
     res.send("success");
 });
